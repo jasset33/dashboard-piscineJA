@@ -1,40 +1,28 @@
 <?php
-
 error_reporting(E_ALL);
-ini_set ("display_errors",1);
-
-
-
-print_r($_POST);
-
-$utilisateur=array(
-	"name"=>"julien",
-	"password"=>"juju"
+ini_set("display_errors", 1);
+$utilisateur = array(
+	"mail" => "lilian",
+	"password" => "toto"
 );
-
-
-$usernameTemp="";
-$message="";
-
+$mailTmp="";
+$msg = "";
+//echo !empty($_POST);
 if(!empty($_POST)){
-	if ($utilisateur['name'] == $_POST['username']){
-		if($utilisateur['password']== $_POST['pass']){
-			$message=echo "Bien connecté";
+	if($utilisateur['mail'] == $_POST['mail']){
+		if($utilisateur['password'] == $_POST['pass']){
+			$msg = "Bien connecté";
 		}
-			else {
-				echo "Mot de passe incorrect";
-				$message=$usernameTemp=$_POST['username'];
-			}
-	}
 		else {
-			$message=echo "Utilisateur inconnu";
-		};
+			$msg = "Mot de passe incorrect";
+			$mailTmp = $_POST['mail'];
+		}
+	}
+	else {
+		$msg = "Adresse mail inconnue";
+	}
 }
 ?>
-
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -69,7 +57,7 @@ if(!empty($_POST)){
 	<div class="limiter">
 		<div class="container-login100" style="background-image: url('images/bg-01.jpg');">
 			<div class="wrap-login100">
-				<form class="login100-form validate-form" method="POST" >
+				<form class="login100-form validate-form" method="POST">
 					<span class="login100-form-logo">
 						<i class="zmdi zmdi-landscape"></i>
 					</span>
@@ -77,9 +65,8 @@ if(!empty($_POST)){
 					<span class="login100-form-title p-b-34 p-t-27">
 						Log in
 					</span>
-
 					<div class="wrap-input100 validate-input" data-validate = "Enter username">
-						<input class="input100" type="text" name="username" placeholder="username" value="<?=$usernameTemp?>">
+						<input class="input100" type="mail" name="mail" placeholder="Adresse mail" value="<?=$mailTmp?>" >
 						<span class="focus-input100" data-placeholder="&#xf207;"></span>
 					</div>
 
@@ -87,14 +74,14 @@ if(!empty($_POST)){
 						<input class="input100" type="password" name="pass" placeholder="Password">
 						<span class="focus-input100" data-placeholder="&#xf191;"></span>
 					</div>
-
+					<span><?=$msg?></<span>
 					<div class="contact100-form-checkbox">
 						<input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
 						<label class="label-checkbox100" for="ckb1">
 							Remember me
 						</label>
 					</div>
-					<p style="color:white"><?=$message?></p>
+
 					<div class="container-login100-form-btn">
 						<button class="login100-form-btn">
 							Login
