@@ -30,11 +30,9 @@
               <table id="example2" class="table table-bordered table-hover">
                 <thead>
                 <tr>
-                  <th>nom</th>
-                  <th>prenom</th>
-                  <th>mail</th>
-                  <th>id_civilite</th>
-                  <th>id_user_status</th>
+                  <th>title</th>
+                  <th>content</th>
+                  <th>coverimage</th>
                 </tr>
                 </thead>
                 <tbody>
